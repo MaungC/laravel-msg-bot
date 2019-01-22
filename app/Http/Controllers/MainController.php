@@ -13,7 +13,7 @@ class MainController extends Controller
             //get the user’s id
             $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
             // dd($id);
-        $this->sendTextMessage($id, $data);
+        $this->sendTextMessage($id, "Hello, What can i help you ?");
     }
 
 private function sendTextMessage($recipientId, $messageText)
