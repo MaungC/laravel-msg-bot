@@ -13,7 +13,7 @@ class MainController extends Controller
             //get the user’s id
             $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
             dd($id);
-        $this->sendTextMessage($id, "Hello friend, Welcom my 'Chat Bot' !. What can i help?");
+        $this->sendTextMessage($id, "Hello friend, Welcom my Chat Bot. What can i help?");
     }
 
 private function sendTextMessage($recipientId, $messageText)
