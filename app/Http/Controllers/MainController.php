@@ -9,11 +9,11 @@ class MainController extends Controller
     public function receive(Request $request)
     {
             $data = $request->all();
-            // dd($data);
+            dd($data);
         
             //get the user’s id
             $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
-        $this->sendTextMessage($id, $data["entry"][0]["messaging"][0]);
+        $this->sendTextMessage($id, "Hello friend");
     }
 
 private function sendTextMessage($recipientId, $messageText)
