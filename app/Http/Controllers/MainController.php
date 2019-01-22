@@ -8,8 +8,8 @@ class MainController extends Controller
 {
     public function receive(Request $request)
     {
-        dd("hello receive");
             $data = $request->all();
+            dd($data);
         
             //get the user’s id
             $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
