@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function receive(Request $request)
-{
-        $data = $request->all();
-        //get the user’s id
-        $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
-     $this->sendTextMessage($id, "Hello");
-}
+    {
+        dd("hello receive");
+            $data = $request->all();
+        
+            //get the user’s id
+            $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
+        $this->sendTextMessage($id, "Hello");
+    }
 
 private function sendTextMessage($recipientId, $messageText)
     {
@@ -24,7 +26,7 @@ private function sendTextMessage($recipientId, $messageText)
                 "text" => $messageText
             ]
         ];
-        $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . env("EAAhmYW4BXZAIBAA4SjktNpL7rFCMSFlZBa3OxcHMMFFozJYWptFnjbhcNdYqABCRJroBujqPnbNcOYXnZAEJSxG1X7tmc82jBA3896fPddcrX3CsxZAfZCERNcXAuz96D3YR8Q0tPfQ6BzHaG85kEa7hdKFq6SU8yaHMLSB3mgQZDZD"));
+        $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=EAAhmYW4BXZAIBAA4SjktNpL7rFCMSFlZBa3OxcHMMFFozJYWptFnjbhcNdYqABCRJroBujqPnbNcOYXnZAEJSxG1X7tmc82jBA3896fPddcrX3CsxZAfZCERNcXAuz96D3YR8Q0tPfQ6BzHaG85kEa7hdKFq6SU8yaHMLSB3mgQZDZD');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
