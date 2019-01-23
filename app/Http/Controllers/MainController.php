@@ -36,4 +36,14 @@ private function sendTextMessage($recipientId, $messageText)
     
 }
 
+$entries = \App\Bot\Webhook\Entry::getEntries($request);
+
+foreach ($entries as $entry) {
+    $messagings = $entry->getMessagings();
+    foreach ($messagings as $messaging) {
+        dispatch(new \App\Jobs\BotHandler($messaging));
+    }
+}
+return response();
+
 }
